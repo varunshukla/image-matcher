@@ -33,8 +33,6 @@ for i = 1:num
         end
 
         C = normxcorr2(findr2g , arrr2g);
-%         k = int64(max(C(:)));
-        [ypeak, xpeak] = find(C==max(C(:)));
         k = int64(max(C(:)));
         if k == 1
             index = arri;
@@ -45,13 +43,7 @@ for i = 1:num
 end
 if flag == 1
     fprintf('Image found.\n');
-    %imshowpair(findi , index, 'montage');
-    yoffSet = ypeak-size(findr2g,1);
-    xoffSet = xpeak-size(findr2g,2);
-    hFig = figure;
-    hAx  = axes;
-    imshow(index,'Parent', hAx);
-    imrect(hAx, [xoffSet+1, yoffSet+1, size(findr2g,2), size(findr2g,1)]);
+    imshowpair(findi , index, 'montage');
 else
     fprintf('Image not present\n');
     imshow(find);
