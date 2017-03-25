@@ -1,0 +1,2 @@
+The task of given script is to perform image processing and search for the presence of an image.
+If the image is found in the database then the image to be found and image present in database is shown along with proper message whereas if image is not found the image to be found is printed along with proper message. 
