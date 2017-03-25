@@ -1,5 +1,3 @@
-%prompt = 'Do you want more? Y/N [Y]: ';
-%str = input(prompt,'s');
 clc;
 clear all;
 num = input('Enter the number of images you have in database.\n');
@@ -43,10 +41,8 @@ for i = 1:num
         end
     end
 end
-flag
 if flag == 1
     fprintf('Image found.\n');
-%     figure;
     imshowpair(findi , index, 'montage');
 else
     fprintf('Image not present\n');
