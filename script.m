@@ -43,7 +43,7 @@ for i = 1:num
 end
 if flag == 1
     fprintf('Image found.\n');
-    imshowpair(findi , index, 'montage');
+    imshowpair(index,findi, 'montage');
 else
     fprintf('Image not present\n');
     imshow(find);
