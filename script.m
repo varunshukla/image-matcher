@@ -8,8 +8,8 @@ prompt = 'Please enter the image name along with extension\n';
 for i = 1:num
     arr{i} = input( prompt, 's');
 end
-find = input('Enter the image name you want to search in database.\n','s');
-findi = imread(find);
+findo = input('Enter the image name you want to search in database.\n','s');
+findi = imread(findo);
 %findr2g = rgb2gray(findi);
 [rows, columns, numberOfColorChannels] = size(findi);
 if numberOfColorChannels > 1
@@ -33,6 +33,7 @@ for i = 1:num
         end
 
         C = normxcorr2(findr2g , arrr2g);
+        [ypeak, xpeak] = find(C==max(C(:)));
         k = int64(max(C(:)));
         if k == 1
             index = arri;
@@ -41,10 +42,17 @@ for i = 1:num
         end
     end
 end
+yoffSet = ypeak-size(findr2g,1);
+xoffSet = xpeak-size(findr2g,2);
+
+hFig = figure;
+hAx  = axes;
 if flag == 1
     fprintf('Image found.\n');
-    imshowpair(index,findi, 'montage');
+%     imshowpair(index,findi, 'montage');
+    imshow(arrr2g,'Parent', hAx);
+    imrect(hAx, [xoffSet+1, yoffSet+1, size(findr2g,2), size(findr2g,1)]);
 else
     fprintf('Image not present\n');
-    imshow(find);
+    imshow(findo);
 end
